@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: App Lookiero
+  description: "User management application"
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Lookiero Technology
+    url: https://lookiero.es/
+    email: technical.office@lookiero.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1-SNAPSHOT
+externalDocs:
+  description: Find out more about Lookiero
+  url: https://lookiero.io/about/
+servers:
+  - url: https://lookiero.swagger.io/v2
+tags:
+  - name: User management application
+    description: Platform for user management
+paths:
+  /lookiero:
+    get:
+      summary: Get data from the users by id of the Lookiero application. The id is the username
+      operationId: getUserById
+      parameters:
+        - in: query
+          name: "username"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/ResponseLookiero"
+          description: Get data from the users of the Lookiero application
+        '500':
+          description: Internal Server Error
+    post:
+      summary: Post Create User Lookiero
+      operationId: postCreateUser
+      requestBody:
+        description: Travel Expense Request
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: "#/components/schemas/UserLookiero"
+      responses:
+        '200':
+          description: Operation OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/ResponseLookiero"
+        '500':
+          description: Internal Server Error
+    put:
+      summary: Update height or weight of a user
+      operationId: updateHeightOrWeight
+      requestBody:
+        description: Update height or weight data
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: "#/components/schemas/UpdateUser"
+      responses:
+        '200':
+          description: Operation OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/ResponseLookiero"
+        '500':
+          description: Internal Server Error
+  /lookiero/users:
+    get:
+      summary: Get registered users in the application
+      operationId: getUsers
+      responses:
+        '200':
+          description: Get data from the users of the Lookiero application
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserLookiero"
+        '500':
+          description: Internal Server Error
+  /lookiero/statistics:
+    get:
+      summary: Get the user's BMI statistics
+      operationId: getStatisticsBMI
+      responses:
+        '200':
+          description: Get data from the users of the Lookiero application
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserStatistics"
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    ResponseLookiero:
+      title: Response main node
+      type: object
+      properties:
+        message:
+          type: string
+        user:
+          type: object
+          $ref: "#/components/schemas/UserLookiero"
+    UserLookiero:
+      title: Response user object
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        birthdate:
+          type: string
+        height:
+          type: string
+        weight:
+          type: integer
+    UpdateUser:
+      title: Request user object for update the height or weight data
+      type: object
+      properties:
+        username:
+          type: string
+        height:
+          type: string
+        weight:
+          type: integer
+    UserStatistics:
+      title: Response statistics node
+      type: object
+      properties:
+        username:
+          type: string
+        age:
+          type: integer
+        bmi:
+          type: string
+        categoryBMI:
+          type: string

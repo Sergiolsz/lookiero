@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: lookiero
+  server:
+    port: 9090
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/lookiero
+    username: root
+    password: root
+    show-sql: true
+    hikari:
+      data-source-properties:
+        allowLoadLocalInfile: true
