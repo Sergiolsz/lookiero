@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "bdcaf3c0-2e45-496a-ac23-6baec0f67ec8",
+		"name": "API Lookiero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17541592"
+	},
+	"item": [
+		{
+			"name": "Find User by Username",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url80}}/lookiero?username=userLookiero",
+					"host": [
+						"{{url80}}"
+					],
+					"path": [
+						"lookiero"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "userLookiero"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url80}}/lookiero/users",
+					"host": [
+						"{{url80}}"
+					],
+					"path": [
+						"lookiero",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find All Users Statistics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url80}}/lookiero/statistics",
+					"host": [
+						"{{url80}}"
+					],
+					"path": [
+						"lookiero",
+						"statistics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"usuarioPrueba\",\r\n    \"password\" : \"prueba00\",\r\n    \"birthdate\" : \"10-10-1990\",\r\n    \"height\" : \"1,80\",\r\n    \"weight\" : 85\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url80}}/lookiero",
+					"host": [
+						"{{url80}}"
+					],
+					"path": [
+						"lookiero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Height and Weight User",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"usuarioPrueba\",\r\n    \"height\" : \"1,85\",\r\n    \"weight\" : 80\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url80}}/lookiero",
+					"host": [
+						"{{url80}}"
+					],
+					"path": [
+						"lookiero"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
