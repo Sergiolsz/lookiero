@@ -194,6 +194,12 @@ public class UtilsService {
         .build();
   }
 
+  /**
+   * Method to format the user's date of birth
+   *
+   * @param birthdate User birth date data
+   * @return Formatting the user's date of birth
+   */
   public static Date formatterBirthDate(String birthdate) {
     try {
       SimpleDateFormat formatDate = new SimpleDateFormat(PATTERN_DATE);

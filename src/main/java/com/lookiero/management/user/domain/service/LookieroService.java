@@ -104,7 +104,7 @@ public class LookieroService {
    * @return Response with the list of user statistics sorted by BMI.
    */
   public ResponseLookieroModel servicePutUserHeightWeight(
-      UserHeightWeightModel userHeightWeightModel) {
+      @NotNull UserHeightWeightModel userHeightWeightModel) {
 
     // Verification Heigth
     UtilsService.checkHeigth(userHeightWeightModel.getHeight());
